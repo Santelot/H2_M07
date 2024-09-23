@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M07</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">
+            <span>🏁 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Bienvenida, estado de ánimo, agradecimiento y objetivos.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Bienvenida".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hola, Genios. Hoy continuamos aprendiendo a personalizar nuestras apps en Glide. Vamos a enfocarnos en la pestaña de diseño y cómo ajustarla para mejorar la experiencia de usuario.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 3 "¿Cómo Están?".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Para saber cómo se sienten hoy, levanten las dos manos si se sienten llenos de ideas creativas; si están pensando en tomarse las cosas con calma, crucen los brazos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 "Gracias por Asistir".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Como siempre, empezamos la misión juntando las manos y haciendo una reverencia. Gracias por asistir a la misión.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Los objetivos de la misión de hoy son: 1.- Personalizar el diseño de nuestras apps en Glide. 2.- Ajustar los elementos visuales para mejorar la experiencia de usuario.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día (3 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Explorando Figma, una herramienta de diseño colaborativa.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 6 "Innovación del Día".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy vamos a hablar de una herramienta que ha revolucionado la forma en que se crean interfaces de usuario y se diseñan aplicaciones: Figma. Esta plataforma permite diseñar, prototipar y colaborar en tiempo real, lo que facilita la creación de apps y productos digitales que ofrezcan una experiencia visual impecable.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar Diapositiva 7 "Figma en Acción".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Con Figma, los diseñadores pueden crear prototipos interactivos que no solo muestran cómo se verá una aplicación, sino también cómo se sentirá cuando se utilice. Es una herramienta clave que permite perfeccionar la experiencia del usuario antes de pasar al desarrollo real.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 8 "Aplicaciones Prácticas".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Una de las grandes ventajas de Figma es que los elementos de diseño que creamos ahí pueden integrarse fácilmente en plataformas como Glide, lo que nos permite mantener una coherencia visual y mejorar la experiencia del usuario sin perder tiempo en volver a diseñar desde cero.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 3 (11 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('introduccion_datos')">
+        <div class="title">
+            <span>📊 Actividad 3: Introducción y Estructura de Datos (11 pasos)</span>
+            <span>⏰ Tiempo: 22 minutos</span>
+        </div>
+        <div class="subtitle">Personalizando las apps en Glide y ajustando el diseño para mejorar la experiencia de usuario.</div>
+    </div>
+    <div id="introduccion_datos" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (2 minutos): Proyectar Diapositiva 9 "La Importancia del Diseño".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy vamos a entrar en uno de los aspectos más cruciales al crear aplicaciones: el diseño de interfaz. Pongan atención porque dentro de lo que voy a explicar hay un Easter Egg y al final de la clase daré Mon-e a los que lo identifiquen. Un buen diseño no es solo cuestión de estética; determina cómo interactúan los usuarios con nuestra app. Un diseño claro y bien estructurado puede marcar la diferencia entre una experiencia intuitiva y una frustrante.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar Diapositiva 10 "Estructurando los Datos en Glide".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">En Glide, todo empieza con la forma en que organizamos los datos. ¿Por qué es esto tan importante? Porque cada tabla y cada columna que diseñemos será el esqueleto de nuestra aplicación. Si esos datos no están bien estructurados, será difícil que el diseño funcione correctamente. Por ejemplo, si estamos creando un directorio, debemos tener una tabla para el personal con columnas como nombre, correo, foto, teléfono, etc. Y si tenemos una tabla de ubicaciones, debe incluir datos como nombre del lugar, dirección y una imagen.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar Diapositiva 11 "Las Colecciones en Glide".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Una vez que tenemos nuestros datos, Glide los convierte en algo llamado 'colecciones'. Las colecciones son la forma en que Glide muestra los datos dentro de diferentes layouts, y puedes personalizarlas con estilos, colores y funciones. Estas colecciones pueden tomar formas como listas, tablas, tarjetas o incluso tableros Kanban. "Kanban" es una palabra japonesa que significa "señal visual", un tablero de kanban ayuda a visibilizar elementos para que puedas mostrárselo a los demás y que todo el mundo trabaje en sintonía. Así que, dependiendo de cómo quieras que se vea tu app, puedes elegir el estilo de colección que mejor se adapte a lo que quieres mostrar.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar Diapositiva 12 "Personalizando las Colecciones".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Cuando configuras una colección, tienes muchas opciones para personalizar su diseño. Puedes mostrar un título, un subtítulo, un meta, e incluso una imagen por cada entrada. Piensa, por ejemplo, en una app de directorio de empleados. Puedes hacer que aparezcan los nombres y fotos de los empleados en tarjetas y, al hacer clic, se abre más información detallada. Cada colección te da la opción de ajustar su tamaño, estilo, y alineación para que los datos se vean exactamente como quieres.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (2 minutos): Proyectar Diapositiva 13 "El Editor de Layout en Glide".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Una vez que los datos están en Glide, es momento de usar el Editor de Layout. Este editor es donde podemos ver cómo aparecerá la app en una pantalla. Aquí podemos probar, ajustar y organizar la información en cada pestaña. Puedes navegar entre las pestañas usando el menú de navegación que aparece a la izquierda o el menú desplegable en la parte inferior. Lo importante es que cada pestaña está conectada a una tabla, y la forma en que organizas los datos afectará directamente el funcionamiento de la app.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (2 minutos): Proyectar Diapositiva 14 "Configurando Pestañas en Glide".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">En Glide, cada pestaña puede tener su propio conjunto de datos y su propio diseño. Por ejemplo, en una app de tareas, podrías tener una pestaña para un resumen de las tareas y otra para una descripción detallada de cada tarea. Puedes cambiar el nombre de la pestaña, elegir un ícono y, más importante aún, elegir qué estilo de colección quieres mostrar. Estas decisiones afectan la usabilidad de tu app, ya que las pestañas guían a los usuarios a través de la experiencia que estás diseñando para ellos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (2 minutos): Proyectar Diapositiva 15 "Eligiendo el Estilo Correcto".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Una de las decisiones más importantes al diseñar tu app es elegir el estilo de colección adecuado. Por ejemplo, si estás diseñando una app de tareas, un 'checklist' puede ser lo más adecuado. Este estilo permite que los usuarios marquen las tareas como completadas, algo que se logra con una columna booleana en tu tabla. Si quieres mostrar más detalles, un diseño tipo tarjeta puede ser mejor, ya que permite incluir más información visual, como una imagen y una descripción detallada.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (2 minutos): Proyectar Diapositiva 16 "Componentes en Glide".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Además de las colecciones, Glide tiene algo llamado 'componentes'. Estos son elementos adicionales que puedes añadir a tus pestañas, como títulos, imágenes, barras de progreso o incluso videos. Los componentes te permiten personalizar aún más la forma en que tus datos se muestran y agregarle algo especial a cada sección de la app. Puedes añadir múltiples colecciones y componentes en una misma pestaña para hacer que tu app sea más dinámica y visualmente atractiva.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (2 minutos): Proyectar Diapositiva 17 "Personalizando Componentes".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Cada componente en Glide tiene su propio conjunto de configuraciones. Por ejemplo, si añades una barra de progreso, puedes personalizar los valores que se representan. Lo mejor que puedes hacer para aprender cómo funcionan los componentes es experimentar con ellos y ver qué encaja mejor en tu app. Glide te da muchísimas opciones para que adaptes los componentes a tus necesidades y encuentres el balance perfecto entre funcionalidad y estética.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (2 minutos): Proyectar Diapositiva 18 "Resumiendo el Editor de Layout".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Todo lo que hemos visto en el editor de layout y los componentes es lo que nos permitirá transformar nuestra app de algo básico a algo realmente funcional y atractivo. Recuerden que el diseño visual es clave para que los usuarios disfruten de la experiencia y usen la app de manera eficiente.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 11 (1 minuto): Proyectar Diapositiva 19 "Reflexión Final sobre el Diseño".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">La personalización del diseño en Glide no solo nos permite mostrar los datos de forma clara, sino que también mejora la interacción con la app. Un buen diseño no solo es bonito, también es funcional, intuitivo y fácil de navegar. Y esa es la clave para que cualquier aplicación tenga éxito.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (3 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change_doodle')">
+        <div class="title">
+            <span>✍️ Actividad 4: State Change (3 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Dibujo creativo para liberar la mente.</div>
+    </div>
+    <div id="state_change_doodle" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 20 "Dibuja un Doodle".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, vamos a tomar un pequeño descanso. Quiero que saquen una hoja de papel y un lápiz. Durante el próximo minuto, van a dibujar cualquier cosa que se les ocurra. No tiene que ser algo perfecto, solo un doodle que les permita despejarse y estimular su creatividad.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 21 con cronómetro de 1 minuto.</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 22 "Reflexión sobre el Doodle".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¿Cómo se sintieron? Dibujar sin pensar demasiado ayuda a liberar la mente y a abrirnos a nuevas ideas. Este tipo de actividad es muy útil cuando queremos despertar nuestra creatividad y relajarnos al mismo tiempo.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (4 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>👥 Actividad 5: Team Gnius (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Formar equipos para continuar trabajando en las apps.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 23 "Reúnanse en sus Parejas".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, es momento de volver a trabajar en sus apps. Reúnanse en las mismas parejas que formaron en la clase anterior. Tienen un minuto para reunirse y preparar el siguiente paso.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 24 con cronómetro de 1 minuto.</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 25 "Vayan por sus Magic Tablets".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, un representante de cada pareja, por favor, pase al frente y tome una Magic Tablet para continuar trabajando en Glide. Tienen un minuto para hacerlo.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 26 con cronómetro de 1 minuto.</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">N/A</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 6 (5 pasos) -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🚀 Actividad 6: Challenge (5 pasos)</span>
+            <span>⏰ Tiempo: 12 minutos</span>
+        </div>
+        <div class="subtitle">Desafío de Diseño de Interfaz.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 27 "Desafío de Diseño de Interfaz".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, es hora de poner en práctica lo que hemos aprendido hoy. Durante los próximos 10 minutos, diseñarán el layout de las pantallas para su app de seguimiento de tareas en papel, utilizando los elementos de diseño que Glide ofrece. Asegúrense de que la navegación sea intuitiva y que el diseño facilite la visualización y gestión de tareas. Utilicen los componentes y estilos que hemos visto. Pueden acceder al editor de Layout en Glide para revisar los componentes disponibles y asistirse en este diseño.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (10 minutos): Proyectar Diapositiva 28 con cronómetro de 10 minutos.</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 29 "Documentación del Trabajo".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Excelente esfuerzo, Genios. Ahora, antes de que finalicemos, asegúrense de tomar una foto clara de su diseño. Lo necesitarán para la próxima clase, donde continuarán trabajando en su aplicación. Esto es esencial para no perder ningún detalle de su creativo trabajo.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 30 "Revisión de Objetivos".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hemos logrado mucho hoy. Recordemos nuestros objetivos: 1.- Personalizar el diseño de una app en Glide. 2.- Ajustar elementos visuales para mejorar la experiencia del usuario. Hemos tocado cada uno de estos puntos al diseñar nuestras interfaces. ¿Cómo se sienten al respecto?</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 31 "You've Got Mon-e".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Por su excelente trabajo y dedicación hoy, ¡todos ustedes han ganado Mon-e! Espero que estén tan emocionados por su progreso como yo. Sigan así, y verán cómo sus habilidades continúan creciendo.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 7 (3 pasos) -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">
+            <span>🐣 Actividad 7: Easter Egg (3 pasos)</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Easter Egg: ¿Qué significa Kanban?</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 32 "Easter Egg: ¿Qué significa Kanban?".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Es momento del Easter Egg, Genios. La siguiente diapositiva tiene una pregunta sobre algo que mencionamos hoy. Las primeras tres personas en levantar la mano y dar la respuesta correcta ganarán Mon-e. No digan la respuesta en voz alta, solo levanten la mano. ¿Listos?</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 33 "Pregunta: ¿Qué significa Kanban?".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Uno, dos, tres… ¡levanten la mano si saben la respuesta! Vamos a ver quién está prestando atención.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar Diapositiva 34 "Respuesta Correcta".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Uno, ven y dime la respuesta al oído... Ahora tú, dos... Y por último, el tres. La respuesta correcta es 'Kanban' es una palabra japonesa que significa 'señal visual'. ¡Muy bien hecho, todos ustedes ganan Mon-e!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 8 (1 paso) -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏆 Actividad 8: Honor The Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 0.5 minutos</span>
+        </div>
+        <div class="subtitle">Recogida y cierre de la clase</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 35 "Honor The Dojo".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, es momento de recoger nuestras Magic Tablets y dejar el salón como lo encontramos. Gracias por su esfuerzo hoy, nos vemos en la próxima misión.</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
